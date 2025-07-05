@@ -68,8 +68,11 @@ if tab is pressed then it invokes tabsuggestion function where it returns longes
 ## history.cpp
 maintain a queue and history.txt , loads the content to queue form history.txt when execution starts and write to file history.txt from queue when execution ends.queue can store only 20 commands and file can consist 20 commands
 
-## Up Arrow Key
-maintain a integer that increments on uparrow and decrements on downarrow which will initialize command on queue from kth posistion 
+## Up Arrow Key & Down Arrow Key
+maintain a integer that increments on uparrow and decrements on downarrow which will initialize command on queue from kth posistion from history.
+
+## execvp()
+commands which are not implemented will go to execvp.
 
 
 
