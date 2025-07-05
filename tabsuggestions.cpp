@@ -66,26 +66,53 @@ string filesuggestionfun(string &line){
         
 }
 
+// string commandsuggestionfun(string line){
+//     string path="/usr/bin",ans="";
+//     std::vector<std::string> commands;
+//     DIR* dir = opendir(path.c_str());
+//     if (dir) {
+//         struct dirent* ent;
+//         while ((ent = readdir(dir)) != nullptr) {
+//             commands.push_back(ent->d_name);
+//         }
+//         closedir(dir);
+//     }
+//     if(commands.size()==1){
+//         return commands[0];
+//     }
+//     cout<<endl;
+//     for (const auto& cmd : commands){
+//         if (cmd.find(line) == 0) { 
+//             cout<<cmd<<" ";
+//         }
+//     }
+//     return "";
+// }
+
 string commandsuggestionfun(string line){
-    string path="/usr/bin",ans="";
-    std::vector<std::string> commands;
+    string path = "/usr/bin";
+    vector<string> matches;
     DIR* dir = opendir(path.c_str());
     if (dir) {
         struct dirent* ent;
         while ((ent = readdir(dir)) != nullptr) {
-            commands.push_back(ent->d_name);
+            string cmd = ent->d_name;
+            if (cmd.find(line) == 0) {  // starts with prefix
+                matches.push_back(cmd);
+            }
         }
         closedir(dir);
     }
 
-    if(commands.size()==1){
-        return commands[0];
-    }
-    cout<<endl;
-    for (const auto& cmd : commands){
-        if (cmd.find(line) == 0) { 
-            cout<<cmd<<" ";
+    if (matches.size() == 1) {
+        return matches[0];  // Auto-complete if exactly one match
+    } else if (matches.size() > 1) {
+        cout << endl;
+        for (const auto& match : matches) {
+            cout << match << " ";
         }
+        cout << endl;
     }
-    return "";
+
+    return "";  // No auto-completion
 }

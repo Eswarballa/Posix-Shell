@@ -84,13 +84,12 @@ int main(){
                         cout<<line;
                     }else{
                         string s=commandsuggestionfun(line);
-                        if(s!=""){
-                            line="";
-                            break;  
-                        }else{
-                            line="";
-                            break;
-                        }                           
+                        
+                        if(s!="")line = s;  
+                        cout << "\033[2K\r";
+                        cout<<"\033[32m"<<str<<"\033[0m";
+                        cout<<"\033[34m"<<currpath<<"\033[0m"<<">";
+                        cout<<line;                      
                     }
                 }
             }else if(ch == '\033'){ //arrow

@@ -1,19 +1,20 @@
-echo eswar
-cd ..
-cd ~
-ls -al . .. ~
-
-ls -al
-history 10
-gedit &
-cd ..
-cd 2024201017_A2
-ls -al .. . ~ -
-cd -
-cd 2024201017_A2
-ls | grep txt | sort
-ls grep cpp | sort
-ls | grep txt | sort
-ls | grep cpp | sort
-history 
+ls
+exit
+ls
+make
+./a.out
+exit
+make
+./a.out
+exit
+ecchecheeexit
+exit
+echo history.txt
+clear
+echo history.txt
+clear
+exit
+echo history.cpp
+echo
+clear
 exit
