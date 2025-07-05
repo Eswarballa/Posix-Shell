@@ -66,29 +66,6 @@ string filesuggestionfun(string &line){
         
 }
 
-// string commandsuggestionfun(string line){
-//     string path="/usr/bin",ans="";
-//     std::vector<std::string> commands;
-//     DIR* dir = opendir(path.c_str());
-//     if (dir) {
-//         struct dirent* ent;
-//         while ((ent = readdir(dir)) != nullptr) {
-//             commands.push_back(ent->d_name);
-//         }
-//         closedir(dir);
-//     }
-//     if(commands.size()==1){
-//         return commands[0];
-//     }
-//     cout<<endl;
-//     for (const auto& cmd : commands){
-//         if (cmd.find(line) == 0) { 
-//             cout<<cmd<<" ";
-//         }
-//     }
-//     return "";
-// }
-
 string commandsuggestionfun(string line){
     string path = "/usr/bin";
     vector<string> matches;
@@ -97,7 +74,7 @@ string commandsuggestionfun(string line){
         struct dirent* ent;
         while ((ent = readdir(dir)) != nullptr) {
             string cmd = ent->d_name;
-            if (cmd.find(line) == 0) {  // starts with prefix
+            if (cmd.find(line) == 0) {  
                 matches.push_back(cmd);
             }
         }

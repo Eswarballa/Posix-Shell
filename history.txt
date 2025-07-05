@@ -1,6 +1,4 @@
 ls
-exit
-ls
 make
 ./a.out
 exit
@@ -17,4 +15,6 @@ exit
 echo history.cpp
 echo
 clear
+exit
+echo history.txt
 exit
