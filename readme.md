@@ -74,5 +74,6 @@ maintain a integer that increments on uparrow and decrements on downarrow which 
 ## execvp()
 commands which are not implemented will go to execvp.
 
-
+## watch demo
+video demo:https://drive.google.com/file/d/1l2o-JOE1TrgywCnhJGM0w4ohIGucJX7r/view?usp=drive_link
 
