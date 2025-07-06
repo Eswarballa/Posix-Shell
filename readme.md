@@ -75,6 +75,7 @@ maintain a integer that increments on uparrow and decrements on downarrow which 
 commands which are not implemented will go to execvp.
 
 ## watch demo video 
-watch in 2x speed
-video demo:https://drive.google.com/file/d/1l2o-JOE1TrgywCnhJGM0w4ohIGucJX7r/view?usp=drive_link
+watch on 2x speed
+
+video demo link:https://drive.google.com/file/d/1l2o-JOE1TrgywCnhJGM0w4ohIGucJX7r/view?usp=drive_link
 
