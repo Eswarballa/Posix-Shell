@@ -34,12 +34,9 @@ void redirectionfun2(vector<string> command, string input_file, string output_fi
         }
 
         if (!output_file.empty()) {
-            int fdout;
-            if (iosymbol == ">>") {
-                fdout = open(output_file.c_str(), O_WRONLY | O_CREAT | O_APPEND, 0644);
-            } else {
-                fdout = open(output_file.c_str(), O_WRONLY | O_CREAT | O_TRUNC, 0644);
-            }
+            int fdout = (iosymbol == ">>")
+                ? open(output_file.c_str(), O_WRONLY | O_CREAT | O_APPEND, 0644)
+                : open(output_file.c_str(), O_WRONLY | O_CREAT | O_TRUNC, 0644);
             if (fdout == -1) {
                 perror("open output file failed");
                 exit(1);

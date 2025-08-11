@@ -1,20 +1,20 @@
-ls
-make
-./a.out
-exit
-make
-./a.out
-exit
-ecchecheeexit
-exit
-echo history.txt
-clear
-echo history.txt
 clear
 exit
-echo history.cpp
-echo
+sudo systemctl status ssh
+sudo apt update
+sudo apt install openssh-server -y
+sudo systemctl enable --now ssh
+sudo systemctl status ssh
+clear\
 clear
+echo eswar
+echo "eswar"
 exit
-echo history.txt
+echo "eswar        "
+cat < history.txt | wc -l > lines.txt
+cat lines.txt
+ls | grep *.txt > out.txt
+cat out.txt
+exit
+git commit -m "io with redirection corrected"
 exit
