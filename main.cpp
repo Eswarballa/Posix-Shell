@@ -148,7 +148,7 @@ int main(){
         while(commands >> token){
             tokens.push_back(token);
         }
-        if(tokens[0]=="exit"){
+        if(!tokens.empty() && tokens[0]=="exit"){
             writehistory(history);
             return 1;
         }
@@ -164,7 +164,7 @@ int main(){
             if(i=="exit" ){
                 return 1;
             }
-            userinpfun(i,history);
+             if(!i.empty())userinpfun(i,history);
         }
         
         char path[100];

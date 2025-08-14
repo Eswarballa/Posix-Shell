@@ -116,7 +116,11 @@ void printls(vector<string> tokens){
             cout<<"ls: cannot access "<<tokens[1]<<": No such file or directory"<<endl;
             }
 
-    DIR* dir = opendir(prepath);
+        DIR* dir = opendir(prepath);
+        if (dir == nullptr) {
+            cout << "ls: cannot access '" << tokens[0] << "': No such file or directory" << endl;
+            return;
+        }
         struct dirent* entry;
         if(tokens[1]=="ls" || tokens[1]=="-a"){
             while ((entry = readdir(dir)) != nullptr){
@@ -215,14 +219,18 @@ void lsfun(vector<string> tokens){
                 dirs.push_back(tokens[i]);
             }
         }
-        if((find(flags.begin(),flags.end(),"-al")!=flags.end()) || (find(flags.begin(),flags.end(),"-la")!=flags.end()) || (find(flags.begin(),flags.end(),"-l")!=flags.end()) && (find(flags.begin(),flags.end(),"-a")!=flags.end())){
-            final_flag="-al";
+        if((find(flags.begin(), flags.end(), "-al") != flags.end()) || 
+       (find(flags.begin(), flags.end(), "-la") != flags.end())){
+        final_flag = "-al";
         }
-        else if(find(flags.begin(),flags.end(),"-l")!=flags.end()){
-            final_flag="-l";
+        else if(find(flags.begin(), flags.end(), "-l") != flags.end()){
+            final_flag = "-l";
+        }
+        else if(find(flags.begin(), flags.end(), "-a") != flags.end()){
+            final_flag = "-a";
         }
         else{
-            final_flag="-a";
+            final_flag = "ls";
         }
         vector<string> tokens2;
         if(dirs.size()==0){

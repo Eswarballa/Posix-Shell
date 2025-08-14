@@ -1,5 +1,3 @@
-clear
-exit
 sudo systemctl status ssh
 sudo apt update
 sudo apt install openssh-server -y
@@ -17,4 +15,6 @@ ls | grep *.txt > out.txt
 cat out.txt
 exit
 git commit -m "io with redirection corrected"
+exit
+clear
 exit
