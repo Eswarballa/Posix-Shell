@@ -21,7 +21,9 @@ void foregroundfun(vector<string> tokens){
         
     } else if (pid > 0) {
         int status;
+        foreground_pid = pid;
         waitpid(pid,&status,2);       
+        foreground_pid = -1; 
         return;
     } else {
         std::cerr << "Fork failed." << std::endl;

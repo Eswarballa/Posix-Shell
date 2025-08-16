@@ -4,11 +4,26 @@
 #include <termios.h>
 #include "header.h"
 using namespace std;
-void handle_sig(int sig){
-    
+pid_t foreground_pid = -1;
+void handle_sigtstp(int sig) {
+    if (foreground_pid > 0) {
+        kill(foreground_pid, SIGTSTP);
+        cout << endl << "Process " << foreground_pid << " stopped" << endl;
+        foreground_pid = 0;
+    }
+}
+
+void handle_sigint(int sig) {
+    if (foreground_pid > 0) {
+        kill(foreground_pid, SIGINT);
+        cout << endl << "Process " << foreground_pid << " interrupted" << endl;
+        foreground_pid = 0;
+    }
 }
 
 int main(){
+    signal(SIGTSTP, handle_sigtstp); // Ctrl+Z
+    signal(SIGINT, handle_sigint);   // Ctrl+C
     string commandline;
     deque<string> history;
     char hstname[50];
@@ -25,7 +40,6 @@ int main(){
     string prev_path=string(path),line; 
     int prev_path_len=prev_path.length();
     const char* username=getenv("USER");
-    signal(SIGINT, handle_sig);
     if(username==nullptr){
         cout<<"error in getting username";
         return 1;
@@ -118,13 +132,8 @@ int main(){
                     cout<<line;                                      
                  }
                 }
-            }else if(ch == '\x1A'){  //  Ctrl+Z
-                    signal(SIGTSTP, SIG_DFL); 
-                    raise(SIGTSTP); 
-            } else if (ch == '\x03'){  //  Ctrl+C
-                                        
             } else if (ch == '\x04'){  //  Ctrl+D
-                   cout<<endl;
+                   cout<<"^D \n logging out"<<endl;
                    exit(0);
             }else {
                 line += ch; 

@@ -2,6 +2,7 @@
 #define HEADER_H
 #include<bits/stdc++.h>
 using namespace std;
+extern pid_t foreground_pid;
 void userinpfun(string commandline,deque<string> &history);
 void echofun(std::vector<std::string> tokens);
 void cdfun(std::vector<std::string> tokens);
